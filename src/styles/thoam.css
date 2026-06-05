@@ -1,0 +1,246 @@
+/* Thổ Âm — design system CSS */
+
+.vt-root {
+  font-family: var(--font-family);
+  color: var(--ink);
+  background: var(--paper);
+  min-height: 100vh;
+}
+
+.vt-serif { font-family: var(--font-serif); }
+.vt-mono  { font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+
+/* ── Buttons ── */
+.vt-btn {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 14px;
+  border: none;
+  border-radius: 999px;
+  padding: 11px 20px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform .12s, background .15s, box-shadow .15s;
+  white-space: nowrap;
+}
+.vt-btn--primary {
+  background: var(--primary);
+  color: #fff;
+  box-shadow: 0 4px 14px -4px rgba(46,139,87,.45);
+}
+.vt-btn--primary:hover { background: var(--primary-deep); }
+.vt-btn--ghost {
+  background: transparent;
+  color: var(--ink);
+  box-shadow: inset 0 0 0 1.5px var(--line);
+}
+.vt-btn--ghost:hover { background: var(--paper-deep); }
+
+/* ── Chips ── */
+.vt-chip {
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 999px;
+  padding: 6px 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: inset 0 0 0 1.5px var(--line);
+  color: var(--ink-soft);
+  background: var(--paper-2);
+  cursor: pointer;
+  white-space: nowrap;
+  user-select: none;
+}
+.vt-chip--on {
+  background: var(--primary);
+  color: #fff;
+  box-shadow: none;
+}
+.vt-chip .dot { width: 8px; height: 8px; border-radius: 999px; }
+
+/* Region dots */
+.dot-bac   { background: var(--bac); }
+.dot-trung { background: var(--trung); }
+.dot-nam   { background: var(--nam); }
+
+/* ── Cards ── */
+.vt-card {
+  background: var(--paper-2);
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-card);
+  outline: 2px solid var(--primary);
+  outline-offset: -6px;
+}
+
+/* ── Search field ── */
+.vt-search {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--paper-2);
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 2px var(--primary), 0 6px 22px -14px rgba(46,139,87,.3);
+  padding: 0 8px 0 20px;
+}
+.vt-search input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--font-serif);
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.vt-search input::placeholder {
+  color: var(--ink-faint);
+  font-style: italic;
+}
+
+/* ── Tags ── */
+.vt-tag {
+  font-size: 12.5px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--son-tint);
+  color: var(--son-deep);
+  letter-spacing: .02em;
+}
+.vt-tag--type {
+  background: var(--brass);
+  color: oklch(0.22 0.06 88);
+}
+
+/* Divider */
+.vt-rule { height: 1px; background: var(--line); border: 0; margin: 0; }
+
+/* Labels */
+.vt-eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+.vt-kicker {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+/* Mobile chrome */
+.vt-statusbar {
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 22px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  flex-shrink: 0;
+}
+.vt-tabbar {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: var(--paper-2);
+  box-shadow: inset 0 1px 0 var(--line);
+  flex-shrink: 0;
+}
+.vt-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--ink-faint);
+  cursor: pointer;
+  padding: 0 8px;
+}
+.vt-tab--on { color: var(--primary); }
+
+/* Meter bar */
+.vt-meter {
+  height: 9px;
+  border-radius: 999px;
+  background: var(--paper-deep);
+  overflow: hidden;
+}
+.vt-meter > i {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+}
+
+/* Desktop nav */
+.vt-desktop-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 44px;
+  border-bottom: 1px solid var(--line);
+  background: var(--paper-2);
+  position: relative;
+  z-index: 3;
+  flex-shrink: 0;
+}
+
+/* Form field */
+.vt-field-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink-soft);
+  margin-bottom: 7px;
+}
+.vt-input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: var(--paper-2);
+  box-shadow: inset 0 0 0 1.5px var(--line);
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-family: var(--font-family);
+  font-size: 15px;
+  color: var(--ink);
+}
+.vt-input:focus {
+  box-shadow: inset 0 0 0 2px var(--primary);
+}
+textarea.vt-input {
+  resize: none;
+}
+
+/* Drag-drop placeholder */
+.vt-dropzone {
+  background-image: repeating-linear-gradient(45deg, var(--line-soft) 0 8px, transparent 8px 16px);
+  background-color: var(--paper-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-faint);
+  font-family: ui-monospace, monospace;
+  font-size: 12px;
+  border-radius: 10px;
+}
+
+/* Page layout helpers */
+.vt-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.vt-page-content {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}

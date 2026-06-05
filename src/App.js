@@ -1,44 +1,23 @@
-import React from "react";
-import Dictionary from "./components/Dictionary";
-import "./App.css";
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import WordResultPage from './pages/WordResultPage';
+import ComparePage from './pages/ComparePage';
+import RegionPage from './pages/RegionPage';
+import ContributePage from './pages/ContributePage';
+import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <div className="container">
-        <header className="App-header">
-          <h1 className="heading">Regional Dictionary</h1>
-        </header>
-        <main>
-          <Dictionary defaultKeyword="aesthetic" />
-        </main>
-        <footer className="mt-5 footer">
-          <div className="footer-content">
-            <p className="credit">
-              Coded by{" "}
-              <a
-                href="https://github.com/s-shemmee"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="footer-link"
-              >
-                s-shemmee
-              </a>
-              ,{" "}
-              <a
-                href="https://github.com/shemmee/Dictionary-React-App"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="footer-link"
-              >
-                Open sourced on Github
-              </a>
-              . Hosted on Vercel
-            </p>
-          </div>
-        </footer>
-      </div>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/word/:term" element={<WordResultPage />} />
+        <Route path="/compare" element={<ComparePage />} />
+        <Route path="/region/:name" element={<RegionPage />} />
+        <Route path="/contribute" element={<ContributePage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
