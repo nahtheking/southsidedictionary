@@ -1,28 +1,94 @@
 :root {
-  --primary-color: #2e8b57;
-  --secondary-color: #277047;
+  /* ── Existing repo tokens (preserved) ── */
+  --primary-color:    #2e8b57;
+  --secondary-color:  #277047;
   --background-color: #dde9e2;
-  --text-color: #000;
-  --font-family: "Poppins", sans-serif;
+  --text-color:       #0b1f14;
+  --font-family:      "Poppins", system-ui, sans-serif;
+
+  /* ── New tokens ── */
+  --primary:      #2e8b57;
+  --primary-deep: #277047;
+  --bg:           #dde9e2;
+
+  --paper:      #dde9e2;
+  --paper-2:    #eef4f0;
+  --paper-deep: #cddfd6;
+  --paper-card: #e8f2ec;
+
+  --ink:       #0b1f14;
+  --ink-soft:  #325c43;
+  --ink-faint: #7aaa8e;
+  --line:      #b4d1c2;
+  --line-soft: #cae0d4;
+
+  --son:      #2e8b57;
+  --son-deep: #277047;
+  --son-tint: #cce8d9;
+
+  --brass:      oklch(0.66 0.10 90);
+  --brass-deep: oklch(0.54 0.10 88);
+
+  /* Region identity */
+  --bac:          oklch(0.43 0.09 200);
+  --bac-tint:     oklch(0.94 0.03 200);
+  --trung:        oklch(0.60 0.11 88);
+  --trung-tint:   oklch(0.94 0.04 88);
+  --nam:          #2e8b57;
+  --nam-tint:     #cce8d9;
+
+  /* Also as --region-* per README */
+  --region-bac:   oklch(0.43 0.09 200);
+  --region-trung: oklch(0.60 0.11 88);
+  --region-nam:   #2e8b57;
+
+  /* Typography */
+  --font-serif:  "Newsreader", Georgia, serif;
+
+  /* Radius */
+  --r-sm:      10px;
+  --r-md:      16px;
+  --r-lg:      24px;
+  --r-xl:      30px;
+  --radius-card: 30px;
+  --radius-pill: 999px;
+  --radius-sm:   10px;
+  --radius-md:   16px;
+
+  --shadow-card: 0 2px 4px rgba(20,60,35,.05), 0 8px 28px -16px rgba(20,60,35,.18);
+  --shadow-pop:  0 12px 40px -12px rgba(20,60,35,.25);
 }
+
+*, *::before, *::after { box-sizing: border-box; }
 
 body {
   margin: 0;
   font-family: var(--font-family);
-  background-image: url("/src/images/background.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+  background-color: var(--paper);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url('/background.png');
+  background-size: 520px;
+  background-repeat: repeat;
+  opacity: 0.038;
+  pointer-events: none;
+  z-index: -1;
 }
 
 a {
   text-decoration: none;
-  color: var(--primary-color);
+  color: var(--primary);
 }
 
 a:hover {
-  color: var(--secondary-color);
+  color: var(--primary-deep);
 }
 
 .container {

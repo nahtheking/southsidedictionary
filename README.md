@@ -1,49 +1,41 @@
-# Dictionary App
+# Thổ Âm — Từ điển tiếng Việt theo vùng miền
 
-The Dictionary App is a web application developed using React.js. It enables users to search for word definitions, synonyms, antonyms, and example sentences. The app offers a user-friendly interface for vocabulary exploration and enrichment, allowing users to enhance their language skills effectively.
+Khám phá sự đa dạng ngôn ngữ của ba miền Bắc – Trung – Nam. Tra nghĩa từ, so sánh cách gọi theo vùng, nghe phát âm địa phương, và đóng góp từ mới cho cộng đồng.
 
-![Snapshot_hemmee-dictionary-react](https://github.com/s-shemmee/Dictionary-React-App/assets/56132945/6e13bff1-f7ac-47f2-b505-0cd7e9d67cd2)
+[![Demo](https://img.shields.io/badge/Live%20Demo-southdictionary.netlify.app-2e8b57?style=for-the-badge)](https://southdictionary.netlify.app)
 
-## Table of Contents
-- [Features](#features)
-- [Technologies & Tools Used](#technologies--tools-used)
-- [Installation and Usage](#installation-and-usage)
-- [Demo](#demo)
-- [Credits](#credits)
-- [License](#license)
+![Thổ Âm Screenshot](https://southdictionary.netlify.app/og-image.png)
 
-## Features
-- Search for word definitions, pronunciation, examples, synonyms, antonyms, and images.
-- Pronunciation feature allows users to listen to the correct pronunciation of words.
-- Provides comprehensive word information, including the word's part of speech (noun, verb, adjective, etc.).
-- Offers example sentences to understand the word's usage in context.
-- Displays synonyms and antonyms to expand vocabulary and improve language skills.
-- Includes images related to the searched word for visual representation and better understanding.
-- User-friendly interface for easy navigation and efficient search.
+---
 
-## Technologies & Tools Used
-- ReactJs
-- JavaScript
-- CSS
-- VS Code
+## Tính năng
 
-## Installation and Usage
-To use this app, you can follow these steps:
+- **Tra từ theo vùng miền** — xem cùng một khái niệm được gọi như thế nào ở Bắc / Trung / Nam
+- **Bản đồ nhiệt** — bản đồ Việt Nam hiển thị mức độ phổ biến của từng cách gọi
+- **So sánh 3 miền** — đặt cạnh nhau để thấy sự khác biệt
+- **Trang vùng miền** — khám phá từ vựng đặc trưng của từng phương ngữ
+- **Đóng góp từ mới** — cộng đồng cùng xây dựng từ điển
 
-- Clone the repository or download the source code.
-- Open the project in your preferred code editor.
-- Run `npm install` to install the necessary dependencies.
-- Run `npm start` to start the development server.
-- Open your browser and navigate to `http://localhost:3000` to use the app.
+## Công nghệ
 
-To use the app, simply type a word in the search bar to retrieve its definitions, synonyms, antonyms, and example sentences.
+- **React 18** + **React Router v7**
+- **Vite 5** (build tool)
+- **react-simple-maps** — bản đồ Việt Nam tương tác
+- **CSS custom properties** — design system token (Poppins + Newsreader)
+
+## Chạy local
+
+```bash
+git clone https://github.com/nahtheking/southsidedictionary.git
+cd southsidedictionary
+npm install
+npm run dev       # http://localhost:3001
+```
 
 ## Demo
-A live demo of the React Dictionary App is available at [LINK TO LIVE DEMO](https://dictionary-app-shemmee.vercel.app). 
 
-## Credits
-- The dictionary app was created by [s-shemmee](https://github.com/s-shemmee).
-- The app uses the [Free Dictionary API](https://dictionaryapi.dev) for word information and the [Pexels API](https://www.pexels.com/api/documentation/) for images.
+[https://southdictionary.netlify.app](https://southdictionary.netlify.app)
 
 ## License
-This project is licensed under the MIT license.
+
+MIT
