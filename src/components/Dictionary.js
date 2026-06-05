@@ -1,50 +1,36 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import Results from "./Results";
-import Photos from "./Photos";
 import PropTypes from "prop-types";
+import { searchWord } from "../services/api";
 import "../styles/Dictionary.css";
 
 const Dictionary = ({ defaultKeyword }) => {
   const [keyword, setKeyword] = useState(defaultKeyword);
   const [results, setResults] = useState(null);
-  const [photos, setPhotos] = useState(null);
-  const [loaded, setLoaded] = useState(false);
+  const [isSearching, setIsSearching] = useState(false);
+  const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const search = () => {
-      const dictionaryApiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${keyword}`;
-      const pexelsApiKey = process.env.REACT_APP_PEXELS_API_KEY;
-      const pexelsApiUrl = `https://api.pexels.com/v1/search?query=${keyword}&per_page=9`;
-      const pexelsApiHeaders = { Authorization: pexelsApiKey };
+  const search = async (searchKeyword) => {
+    try {
+      setIsSearching(true);
+      setError(null);
 
-      axios
-        .get(dictionaryApiUrl)
-        .then(handleDictionaryResponse)
-        .catch((error) => {
-          console.error("Error fetching dictionary data:", error);
-        });
-      axios
-        .get(pexelsApiUrl, { headers: pexelsApiHeaders })
-        .then(handlePexelsResponse)
-        .catch((error) => {
-          console.error("Error fetching photos:", error);
-        });
-    };
-
-    if (!loaded) {
-      search();
-      setLoaded(true);
+      // Tìm kiếm từ trong từ điển local
+      const wordData = await searchWord(searchKeyword);
+      setResults(wordData);
+    } catch (err) {
+      console.error("Error:", err);
+      setError("Không tìm thấy từ này trong từ điển");
+      setResults(null);
+    } finally {
+      setIsSearching(false);
     }
-  }, [keyword, loaded]);
-
-  const handlePexelsResponse = (response) => {
-    setPhotos(response.data.photos);
   };
 
-  const handleDictionaryResponse = (response) => {
-    setResults(response.data[0]);
-  };
+  // Tìm kiếm lần đầu khi component mount
+  useEffect(() => {
+    search(defaultKeyword);
+  }, [defaultKeyword]);
 
   const handleKeywordChange = (event) => {
     setKeyword(event.target.value);
@@ -52,29 +38,35 @@ const Dictionary = ({ defaultKeyword }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setLoaded(false);
+    search(keyword);
   };
 
   return (
     <div className="Dictionary">
       <section>
-        <div className="subheading">What word piques your interest?</div>
+        <div className="subheading">Bạn muốn tìm từ gì?</div>
         <form onSubmit={handleSubmit}>
           <input
             className="search"
             type="search"
             name="keyword"
             onChange={handleKeywordChange}
-            placeholder={defaultKeyword}
+            value={keyword}
+            placeholder="Nhập từ cần tìm..."
           />
-          <input type="submit" value="Search" className="search-button" />
+          <input 
+            type="submit" 
+            value={isSearching ? "Đang tìm..." : "Tìm kiếm"} 
+            className="search-button"
+            disabled={isSearching}
+          />
         </form>
         <div className="suggestions">
-          Suggested concepts: cat, tree, code, sun...
+          Gợi ý: hello, book, code, sun...
         </div>
       </section>
+      {error && <div className="error-message">{error}</div>}
       {results && <Results results={results} />}
-      {photos && <Photos photos={photos} />}
     </div>
   );
 };
